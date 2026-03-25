@@ -1,0 +1,17 @@
+cooldown-seconds: 600
+
+kits:
+  starter:
+    permission: kit.starter
+  vip:
+    permission: kit.vip
+  mvp:
+    permission: kit.mvp
+  pro:
+    permission: kit.pro
+  elite:
+    permission: kit.elite
+  media:
+    permission: kit.media
+  owner:
+    permission: kit.owner
