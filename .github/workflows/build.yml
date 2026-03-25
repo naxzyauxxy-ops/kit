@@ -16,9 +16,9 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: '17'
-          cache: maven
+          distribution: 'temurin'
+          java-version: '21' # Updated from 17 to 21
+          cache: 'maven'
 
       - name: Build Plugin
         run: mvn -B package
