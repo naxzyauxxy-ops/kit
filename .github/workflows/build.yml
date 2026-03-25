@@ -6,8 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # This environment variable explicitly opts into Node 24 
-    # to clear the deprecation warning you are seeing.
+    # This section specifically kills the "Node.js 20 deprecated" warning
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -19,10 +18,9 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          # Updated to 21 to support modern Minecraft (1.20.5+)
-          java-version: '21' 
+          java-version: '21' # Paper 1.20.4+ runs best on Java 21
           cache: 'maven'
 
       - name: Build Plugin
-        # Using 'clean' ensures no old files interfere with the build
+        # 'clean' helps prevent old errors from sticking around
         run: mvn -B clean package
