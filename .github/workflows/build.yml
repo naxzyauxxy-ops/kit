@@ -6,7 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # This section specifically kills the "Node.js 20 deprecated" warning
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -18,9 +17,14 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '21' # Paper 1.20.4+ runs best on Java 21
+          java-version: '21'
           cache: 'maven'
 
       - name: Build Plugin
-        # 'clean' helps prevent old errors from sticking around
         run: mvn -B clean package
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ProKits-Jar
+          path: target/*.jar
